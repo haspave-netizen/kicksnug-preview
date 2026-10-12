@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- KICKSNUG sitemap. Base domain is the intended launch domain (kicksnug.com);
+     update it here if the store launches on a different host. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://kicksnug.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://kicksnug.com/shop</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://kicksnug.com/about</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kicksnug.com/contact</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://kicksnug.com/checkout</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://kicksnug.com/policies/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://kicksnug.com/policies/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://kicksnug.com/policies/shipping</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://kicksnug.com/policies/returns</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://kicksnug.com/product/air-zoom-blaze</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://kicksnug.com/product/retro-court-high</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://kicksnug.com/product/phantom-runner</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://kicksnug.com/product/urban-knit-low</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://kicksnug.com/product/blaze-orange-edition</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://kicksnug.com/product/court-classic-white</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://kicksnug.com/product/night-volt</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://kicksnug.com/product/tan-leather-high</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://kicksnug.com/product/street-slip-on</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://kicksnug.com/product/grey-suede-runner</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://kicksnug.com/product/monsoon-trail</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://kicksnug.com/product/midnight-black-edition</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+</urlset>

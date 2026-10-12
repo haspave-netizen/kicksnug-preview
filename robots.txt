@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kicksnug.com/sitemap.xml
