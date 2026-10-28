@@ -82,7 +82,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-s
     <div>
       <div class="eyebrow">Footwear · Series 01</div>
       <h1>Twelve pairs.<br>One <em>point<br>of view.</em></h1>
-      <p>KICKSNUG, rebuilt in a dark, editorial style: no noise, no endless scrolling. Just the collection, the price, and the pair that fits your day — from a 5 am run to a late-night street walk.</p>
+      <p>Built for Indian streets. Monsoon grip, all-day comfort, and prices that don't need a loan — 12 pairs, from a 5 am run to a late-night street walk.</p>
       <div class="hero-meta"><div><b>12</b>Pairs in Series 01</div><div><b>₹4,999–₹12,999</b>Price range</div><div><b>6–11</b>UK sizes</div></div>
     </div>
     <img src="images/midnight-black-edition-1.jpg" alt="Midnight Black Edition sneaker">
@@ -93,7 +93,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-s
 <main class="wrap">
   <section id="collection">
     <h2>The collection</h2>
-    <p class="sub">Tap a pair for its second photo, full description and sizes. Filter by how you actually wear them.</p>
+    <p class="sub">Tap a pair to open its full page — second photo, full description and sizes, in the old bold style. Filter by how you actually wear them.</p>
     <div class="filters" id="filters"></div>
     <div class="grid" id="grid"></div>
     <p class="note" id="empty" style="display:none">No pairs in this filter yet.</p>
@@ -112,7 +112,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-s
 
 <footer id="footer"><div class="wrap">
   <strong style="color:var(--bone);letter-spacing:.14em">KICKSNUG — SERIES 01</strong><br>
-  A free, static rebuild in the spirit of the Ascenta Studio / Last Dept. presentation — original wording and layout, not a copy of their site, text or images.<br>
+  A free, static rebuild in the spirit of the Ascenta Studio / Last Dept. presentation — original wording and layout, not a copy of their site, text or images.<br><strong style="color:var(--bone)">Good to know:</strong> Free shipping over ₹4,999 · 7-day easy returns · Cash on delivery coming soon.<br>
   Photos are the supplier shots already used with permission in the existing KICKSNUG store. No social links are added here: the @kicksnug handle is taken.<br>
   <span class="note">Cart on this page is a demo — no payment is taken. Say the word and I'll wire up real checkout, or publish this to your existing free preview.</span>
 </div></footer>
@@ -131,7 +131,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-s
 </div></div>
 
 <div class="drawer-bg" id="drawerBg" onclick="closeCart()"></div>
-<div class="drawer" id="drawer"><button class="close" onclick="closeCart()">Close ✕</button><h2>Your cart</h2><div id="cartItems"></div><p id="cartTotal" style="font-weight:800"></p><p class="note">Demo cart only — nothing is ordered or charged here.</p></div>
+<div class="drawer" id="drawer"><button class="close" onclick="closeCart()">Close ✕</button><h2>Your cart</h2><div id="cartItems"></div><p id="cartTotal" style="font-weight:800"></p><button class="add" disabled style="opacity:0.5;cursor:not-allowed">Checkout — coming soon</button><p class="note">Demo cart only — nothing is ordered or charged here. Tell us which payment you want (UPI / COD / Razorpay) and checkout will be wired up.</p></div>
 
 <script>
 const PRODUCTS=[
@@ -157,29 +157,29 @@ function render(){
   const list=PRODUCTS.filter(p=>filter==="All"||p.cat===filter);
   document.getElementById("empty").style.display=list.length?"none":"block";
   document.getElementById("grid").innerHTML=list.map(p=>`
-  <button class="card" onclick="openModal('${p.id}')">
+  <a class="card" href="products/${p.id}.html" style="text-decoration:none;color:inherit">
     <img src="${p.img1}" alt="${p.name}" loading="lazy">
-    <div class="card-body"><div class="badge">${p.badge||p.cat}</div><h3>${p.name}</h3><div class="cat">${p.cat} · ★ ${p.rating}</div><div class="price">${fmt(p.price)}<s>${fmt(p.mrp)}</s></div></div>
-  </button>
+    <div class="card-body">${p.badge?`<div class="badge">${p.badge}</div>`:''}<h3>${p.name}</h3><div class="cat">${p.cat} · ★ ${p.rating}</div><div class="price">${fmt(p.price)}<s>${fmt(p.mrp)}</s> <span style="color:var(--accent);font-size:13px">Save ${Math.round((p.mrp-p.price)/p.mrp*100)}%</span></div><div style="margin-top:10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">View pair →</div></div>
+  </a>
   <div style="display:none"></div>`).join("");
   // Add buttons are inside cards; stop card click from also opening modal twice is fine, add via modal only.
 }
 function openModal(id){
-  current=PRODUCTS.find(p=>p.id===id); selSize=8;
+  current=PRODUCTS.find(p=>p.id===id); selSize=null;
   document.getElementById("mImg").src=current.img2; document.getElementById("mImg").alt=current.name;
   document.getElementById("mBadge").textContent=current.badge||current.cat;
   document.getElementById("mName").textContent=current.name;
   document.getElementById("mCat").textContent=current.cat+" · ★ "+current.rating;
   document.getElementById("mTag").textContent=current.tag;
   document.getElementById("mDesc").textContent=current.desc;
-  document.getElementById("mPrice").innerHTML=fmt(current.price)+"<s style='color:#a8a29a;font-weight:400;margin-left:8px'>"+fmt(current.mrp)+"</s>";
-  document.getElementById("mSizes").innerHTML=[6,7,8,9,10,11].map(s=>`<button class="${s===selSize?'sel':''}" onclick="pickSize(${s},this)">UK ${s}</button>`).join("");
-  document.getElementById("mAdd").onclick=()=>addToCart(current.id);
+  document.getElementById("mPrice").innerHTML=fmt(current.price)+"<s style='color:#a8a29a;font-weight:400;margin-left:8px'>"+fmt(current.mrp)+"</s> <span style='color:var(--accent);font-size:14px'>Save "+Math.round((current.mrp-current.price)/current.mrp*100)+"%</span>";
+  document.getElementById("mSizes").innerHTML=[6,7,8,9,10,11].map(s=>`<button onclick="pickSize(${s},this)">UK ${s}</button>`).join("");
+  document.getElementById("mAdd").onclick=()=>{if(selSize===null){alert('Please pick a size first.');return;}addToCart(current.id);}; document.getElementById("mAdd").textContent='Select a size first'; document.getElementById("mAdd").style.opacity='0.6';
   document.getElementById("modal").classList.add("open"); document.getElementById("modalBg").classList.add("open");
 }
-function pickSize(s,el){selSize=s;document.querySelectorAll("#mSizes button").forEach(b=>b.classList.remove("sel"));el.classList.add("sel");}
+function pickSize(s,el){selSize=s;document.querySelectorAll("#mSizes button").forEach(b=>b.classList.remove("sel"));el.classList.add("sel");const a=document.getElementById("mAdd");a.textContent='Add to cart';a.style.opacity='1';}
 function closeModal(){document.getElementById("modal").classList.remove("open");document.getElementById("modalBg").classList.remove("open");}
-function addToCart(id){const p=PRODUCTS.find(x=>x.id===id);cart.push({...p,size:selSize});updateCart();closeModal();openCart();}
+function addToCart(id){if(selSize===null){alert('Please pick a size first.');return;}const p=PRODUCTS.find(x=>x.id===id);cart.push({...p,size:selSize});updateCart();closeModal();openCart();}
 function updateCart(){
   document.getElementById("cartCount").textContent=cart.length;
   document.getElementById("cartItems").innerHTML=cart.length?cart.map((p,i)=>`<div class="drawer-item"><img src="${p.img1}"><div><strong>${p.name}</strong><br><span class="note">UK ${p.size} · ${fmt(p.price)}</span></div><button class="close" onclick="removeItem(${i})">Remove</button></div>`).join(""):"<p class='note'>Your cart is empty. Tap a pair, then Add to cart.</p>";
